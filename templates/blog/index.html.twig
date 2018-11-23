@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h3 class="text-center">Liste des catégories ainsi que 3 articles.</h3>
+        {% for category in categories %}
+                <h3 class="text-center"><a href="{{ path('blog_show_category', {'category': category.name}) }}">{{ category.name }}</a></h3> <br />
+                    <ul style="list-style: none" class="text-center pt-0">
+                        {% for article in category.articles |slice(0, 3) %}
+                            <li class="mr-5"><a href="{{ path('blog_article', { 'articleTitle': article.title }) }}">{{ article.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+        {% endfor %}
+            <div class="row justify-content-center ml-3">
+                <a href="{{ path('article_new') }}"><button type="button" class="btn btn-success mr-5">Ajouter un article</button></a>
+                <a href="{{ path('category_new') }}"><button type="button" class="btn btn-success">Ajouter une catégorie</button></a>
+            </div>
+    </div>
+{% endblock %}

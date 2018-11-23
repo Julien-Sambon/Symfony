@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition de l'Article{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Edition de l'Article</h1>
+
+        {{ include('article/_form.html.twig', {'button_label': 'Modifier'}) }}
+    </div>
+
+{% endblock %}
